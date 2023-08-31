@@ -1,0 +1,23 @@
+
+{% extends 'layout.html' %}
+{% block content %}
+<h1>チャンネルIDからビデオID一覧を取得します</h1>
+<form action="/" method='post'>
+	<input type='text' name='channel' placeholder='チャンネルID'>
+	<button type='submit'>送信</button>
+</form>
+{% if res %}
+	<table>
+		<tr>
+			<th>チャンネル名</th>
+			<th>チャンネルID</th>
+		</tr>
+		{% for item in res %}
+		<tr>
+			<td>{{item.snippet.channelTitle}}</td>
+			<td>{{item.id.channelId}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+{% endif %}
+{% endblock content %}

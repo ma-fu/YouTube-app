@@ -1,0 +1,18 @@
+
+{% extends 'layout.html' %}
+{% block content %}
+{% if res %}
+	<table>
+		<tr>
+			<th>タイトル</th>
+			<th>ビデオID</th>
+		</tr>
+		{% for item in res %}
+		<tr>
+			<td>{{item.snippet.title}}</td>
+			<td>{{item.id.videoID}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+{% endif %}
+{% endblock content %}
