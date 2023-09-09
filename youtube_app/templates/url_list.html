@@ -1,18 +1,19 @@
 
 {% extends 'layout.html' %}
 {% block content %}
-{% if res %}
-	<table>
-		<tr>
-			<th>タイトル</th>
-			<th>ビデオID</th>
-		</tr>
-		{% for item in res %}
-		<tr>
-			<td>{{item.snippet.title}}</td>
-			<td>{{item.id.videoID}}</td>
-		</tr>
-		{% endfor %}
-	</table>
-{% endif %}
+<h1>Temporary CSV File Contents</h1>
+<table border="1">
+{% with open(temp_file) as csvfile %}
+{% for row in csvfile %}
+<tr>
+{% for cell in row.split(',') %}
+<td>{{ cell }}</td>
+{% endfor %}
+</tr>
+{% endfor %}
+{% endwith %}
+</table>
+
+<a href="{{ url_for('download', file_name=temp_file) }}">Download CSV</a>
+</table>
 {% endblock content %}
